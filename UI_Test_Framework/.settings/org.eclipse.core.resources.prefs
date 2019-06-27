@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//ObjectMap/login.properties=UTF-8
 encoding//conf/freeMarkerListener.properties=UTF-8
+encoding//src/core/BaseTest.java=UTF-8
 encoding//src/core/WebDriverEngine.java=UTF-8
+encoding//src/zipDocument/BuildZip.java=UTF-8

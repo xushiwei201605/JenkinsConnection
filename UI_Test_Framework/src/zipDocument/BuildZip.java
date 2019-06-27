@@ -14,15 +14,8 @@ import org.testng.annotations.Test;
 
 public class BuildZip {
 	public  BuildZip() {
-		//构造函数
+		//鏋勯�犲嚱鏁�
 	}
-	/** 
-     * 将存放在sourceFilePath目录下的源文件，打包成fileName名称的zip文件，并存放到zipFilePath路径下 
-     * @param sourceFilePath :待压缩的文件路径 
-     * @param zipFilePath :压缩后存放路径 
-     * @param fileName :压缩后文件的名称 
-     * @return 
-     */  
     public static boolean fileToZip(String sourceFilePath,String zipFilePath,String fileName){  
         boolean flag = false;  
         File sourceFile = new File(sourceFilePath);  
@@ -32,26 +25,26 @@ public class BuildZip {
         ZipOutputStream zos = null;  
 
         if(sourceFile.exists() == false){  
-            System.out.println("待压缩的文件目录："+sourceFilePath+"不存在.");  
-            sourceFile.mkdir(); // 新建目录
+            System.out.println("寰呭帇缂╃殑鏂囦欢鐩綍锛�"+sourceFilePath+"涓嶅瓨鍦�.");  
+            sourceFile.mkdir(); // 鏂板缓鐩綍
         }  
         try {  
             File zipFile = new File(zipFilePath + "\\" + fileName +".zip");  
             if(zipFile.exists()){  
-                System.out.println(zipFilePath + "目录下存在名字为:" + fileName +".zip" +"打包文件.");  
+                System.out.println(zipFilePath + "鐩綍涓嬪瓨鍦ㄥ悕瀛椾负:" + fileName +".zip" +"鎵撳寘鏂囦欢.");  
             }else{  
                 File[] sourceFiles = sourceFile.listFiles();  
                 if(null == sourceFiles || sourceFiles.length<1){  
-                    System.out.println("待压缩的文件目录：" + sourceFilePath + "里面不存在文件，无需压缩.");  
+                    System.out.println("寰呭帇缂╃殑鏂囦欢鐩綍锛�" + sourceFilePath + "閲岄潰涓嶅瓨鍦ㄦ枃浠讹紝鏃犻渶鍘嬬缉.");  
                 }else{  
                     fos = new FileOutputStream(zipFile);  
                     zos = new ZipOutputStream(new BufferedOutputStream(fos));  
                     byte[] bufs = new byte[1024*10];  
                     for(int i=0;i<sourceFiles.length;i++){  
-                        //创建ZIP实体，并添加进压缩包  
+                        //鍒涘缓ZIP瀹炰綋锛屽苟娣诲姞杩涘帇缂╁寘  
                         ZipEntry zipEntry = new ZipEntry(sourceFiles[i].getName());  
                         zos.putNextEntry(zipEntry);  
-                        //读取待压缩的文件并写进压缩包里  
+                        //璇诲彇寰呭帇缂╃殑鏂囦欢骞跺啓杩涘帇缂╁寘閲�  
                         fis = new FileInputStream(sourceFiles[i]);  
                         bis = new BufferedInputStream(fis, 1024*10);  
                         int read = 0;  
@@ -69,7 +62,7 @@ public class BuildZip {
             e.printStackTrace();  
             throw new RuntimeException(e);  
         } finally{  
-            //关闭流  
+            //鍏抽棴娴�  
             try {  
                 if(null != bis) bis.close();  
                 if(null != zos) zos.close();  
@@ -81,10 +74,5 @@ public class BuildZip {
     return flag;  
     }
     
-//    @Test
-//    public void testZip() {
-//    	buildZip bz = new buildZip();
-//    	bz.fileToZip("F://1老子要考评测师", "E:\\", "a");
-//    }
 
 }

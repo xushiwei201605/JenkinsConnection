@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import utils.Log;
-/**
- * author:lihuanzhen
- */
+
 public class ElementFinder {
 	
 	WebDriver driver;
@@ -16,8 +14,6 @@ public class ElementFinder {
 	{
 		this.driver=driver;
 	}
-	
-
 	
 	public WebElement findElement(String target) {
 		WebElement element = null;
@@ -31,7 +27,7 @@ public class ElementFinder {
 		return element;
 
 	}
-	
+	//通过获取元素定位前缀的方法定位元素
 	public WebElement findElementByPrefix(String locator)
 	{
 		String target=locator.trim();
@@ -50,7 +46,6 @@ public class ElementFinder {
 		}else if(target.startsWith("link="))
 		{
 			locator = locator.substring("link=".length());
-			System.out.println(locator);
 			return driver.findElement(By.linkText(locator));
 		}else if(target.startsWith("css="))
 		{

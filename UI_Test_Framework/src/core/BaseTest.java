@@ -1,30 +1,15 @@
 package core;
 
-import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-
 import utils.Log;
 import utils.ReadProperties;
 
-/**
- * author:lihuanzhen 初始化浏览器
- */
 
 public class BaseTest {
 
@@ -32,7 +17,7 @@ public class BaseTest {
 	public WebDriver driver;
 	public String driverType;
 
-	// 构造函数
+	// 构造方法
 	public BaseTest(String type) throws Exception {
 		driverType = type;
 		driver = this.newWebDriver(driverType);
@@ -62,9 +47,7 @@ public class BaseTest {
 			driver = new EdgeDriver();
 			Log.info("Using Edge");
 		} else {
-			System.out.println("Not found this browser,You can use ‘firefox‘, ‘chrome‘ or ‘edge‘");// 如果所要打开浏览器非firefox,
-																									// chrome,
-																									// edge则打印信息找不到该浏览器，并返回空指针。
+			System.out.println("Not found this browser,You can use 'firefox','chrome' or 'edge'");
 			return null;
 		}
 

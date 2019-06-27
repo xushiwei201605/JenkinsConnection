@@ -17,7 +17,6 @@ import utils.Log;
 import utils.ReadProperties;
 
 public class WebTestListener extends TestListenerAdapter {
-	ReadProperties pro = new ReadProperties();
 	FreemarkerTemplateEngine ft=new FreemarkerTemplateEngine();
 	public WebTestListener() {
 		super();
@@ -25,11 +24,11 @@ public class WebTestListener extends TestListenerAdapter {
 	private String writeResultToMailTemplate()
 	{
 		ITestNGMethod method[]=this.getAllTestMethods();
-		List failedList=this.getFailedTests();
-		List passedList=this.getPassedTests();
+		List<ITestResult> failedList=this.getFailedTests();
+		List<ITestResult> passedList=this.getPassedTests();
 		
-		List failedList1=new ArrayList();
-		List passedList1=new ArrayList();
+		List<ITestResult> failedList1=new ArrayList<ITestResult>();
+		List<ITestResult> passedList1=new ArrayList<ITestResult>();
 		for(int j=0;j<failedList.size();j++)
 		{
 			ITestResult tr=(ITestResult) failedList.get(j);
@@ -70,7 +69,7 @@ public class WebTestListener extends TestListenerAdapter {
 			}
 			passedList1.add(tr);
 		}
-		Map context=new HashMap();
+		Map<String, Object> context=new HashMap<String, Object>();
     	context.put("date", new Date());
         context.put("failedList",failedList);   
         context.put("passedList",passedList1); 
@@ -91,17 +90,16 @@ public class WebTestListener extends TestListenerAdapter {
 	public void onFinish(ITestContext testContext) {
 		// TODO Auto-generated method stub
 		super.onFinish(testContext);
-		//本地调试
 		if(System.getProperty("os.name").contains("dow"))
 		{
 			//return;
 		}
 		try {
-			if(pro.getFreeMarkerPropertyValue("enable_email").equals("true"))
+			if(ReadProperties.getFreeMarkerPropertyValue("enable_email").equals("true"))
 			{
 				String emailContent=this.writeResultToMailTemplate();
-				String emailTitle=pro.getFreeMarkerPropertyValue("mail_title")+"----"+this.getTime();
-				String toMail=pro.getFreeMarkerPropertyValue("to_mail");
+				String emailTitle=ReadProperties.getFreeMarkerPropertyValue("mail_title")+"----"+this.getTime();
+				String toMail=ReadProperties.getFreeMarkerPropertyValue("to_mail");
 				try {
 					if(this.getFailedTests()!=null&&this.getFailedTests().size()>0)
 					{
@@ -109,8 +107,8 @@ public class WebTestListener extends TestListenerAdapter {
 						Log.info("email send to "+toMail+" success");
 					}else
 					{
-						MailUtil.sendEmail(pro.getFreeMarkerPropertyValue("success_to_mail"),emailTitle, emailContent);
-						Log.info("email send to "+pro.getFreeMarkerPropertyValue("success_to_mail")+" success");
+						MailUtil.sendEmail(ReadProperties.getFreeMarkerPropertyValue("success_to_mail"),emailTitle, emailContent);
+						Log.info("email send to "+ReadProperties.getFreeMarkerPropertyValue("success_to_mail")+" success");
 					}
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block

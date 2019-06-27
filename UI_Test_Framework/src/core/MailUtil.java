@@ -3,7 +3,6 @@ package core;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
@@ -11,23 +10,16 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import org.testng.annotations.Test;
 
 public class MailUtil {
 	static int port = 25;
-
     static String server = "smtp.yeah.net";
-
     static String from = "sunliying666";
-
     static String user = "sunliying666@yeah.net";
     static String password = "sunliying666";
 
     
-
-
-
     public static void sendEmail(String email, String subject, String body) throws UnsupportedEncodingException {
         try {
             Properties props = new Properties();

@@ -36,13 +36,11 @@ private static final String DEFAULT_TEMPLATE = "conf/reportTemplate.html";
         Template temp = cfg.getTemplate(getTemplate());    
         StringWriter out = new StringWriter();   
         temp.process(context, out);   
-        //System.out.print(out.toString());
         return out.toString();
     }   
 
   
-    public String getTemplate() {   
-        // TODO Auto-generated method stub   
+    public String getTemplate() {    
         return DEFAULT_TEMPLATE;   
     }     
 
