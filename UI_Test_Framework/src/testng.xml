@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="s1" verbose="1">
+	<listeners>
+		<!-- testng的XML配置文件中添加这些内容 -->
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="sendMail">
+		<classes>
+			<class name="testCase.TestHelloWorld"></class>
+			<class name="sendMail.SendRecentReportMail"></class>
+		</classes>
+	</test>
+
+
+</suite>

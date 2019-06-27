@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test1"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.044">
+  <properties />
+  
+  
+            <testcase name="Test4" time="0.004" classname="testCase.TestHelloWorld" />
+                <testcase name="Test2" time="0.012" classname="testCase.TestHelloWorld" />
+                <testcase name="test" time="0.007" classname="testCase.TestHelloWorld" />
+                <testcase name="Test" time="0.011" classname="testCase.TestHelloWorld" />
+                <testcase name="Test1" time="0.001" classname="testCase.TestHelloWorld" />
+                <testcase name="Test3" time="0.009" classname="testCase.TestHelloWorld" />
+      
+</testsuite>
